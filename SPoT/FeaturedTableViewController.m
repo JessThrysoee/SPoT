@@ -22,8 +22,6 @@
 - (void)refresh
 {
     [self.refreshControl beginRefreshing];
-    
-    self.model = nil;
     dispatch_queue_t queue = dispatch_queue_create("feature table refresh", NULL);
     dispatch_async(queue, ^{
         Model *model = [[Model alloc] initWithPhotos];
