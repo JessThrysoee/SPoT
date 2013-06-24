@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C50B7B4A1778F29D000C71D4 /* NetworkActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = C50B7B491778F29D000C71D4 /* NetworkActivity.m */; };
 		C528324217762E00004F6AC4 /* stanford_bw.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C528324117762E00004F6AC4 /* stanford_bw.jpg */; };
 		C555AAD71773BB3F00C8C9BF /* TagGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C555AAD61773BB3F00C8C9BF /* TagGroupViewController.m */; };
 		C555AADA1773C25E00C8C9BF /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C555AAD91773C25E00C8C9BF /* ImageViewController.m */; };
@@ -30,6 +31,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C50B7B481778F29D000C71D4 /* NetworkActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkActivity.h; sourceTree = "<group>"; };
+		C50B7B491778F29D000C71D4 /* NetworkActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkActivity.m; sourceTree = "<group>"; };
 		C528324117762E00004F6AC4 /* stanford_bw.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = stanford_bw.jpg; sourceTree = "<group>"; };
 		C555AAD51773BB3F00C8C9BF /* TagGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagGroupViewController.h; sourceTree = "<group>"; };
 		C555AAD61773BB3F00C8C9BF /* TagGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagGroupViewController.m; sourceTree = "<group>"; };
@@ -123,6 +126,8 @@
 				C599198717739DE9007210E2 /* SPoTTableViewController.m */,
 				C59919891773A049007210E2 /* FeaturedTableViewController.h */,
 				C599198A1773A049007210E2 /* FeaturedTableViewController.m */,
+				C50B7B481778F29D000C71D4 /* NetworkActivity.h */,
+				C50B7B491778F29D000C71D4 /* NetworkActivity.m */,
 				C599198C1773A4D2007210E2 /* model.h */,
 				C599198D1773A4D2007210E2 /* model.m */,
 				C586F1BD1774FBE50059DCDA /* RecentsViewController.h */,
@@ -239,6 +244,7 @@
 				C555AADA1773C25E00C8C9BF /* ImageViewController.m in Sources */,
 				C586F1BC1774EB000059DCDA /* SPoTTabBarController.m in Sources */,
 				C586F1BF1774FBE50059DCDA /* RecentsViewController.m in Sources */,
+				C50B7B4A1778F29D000C71D4 /* NetworkActivity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

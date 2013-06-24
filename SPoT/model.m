@@ -8,12 +8,27 @@
 
 #import "Model.h"
 #import "FlickrFetcher.h"
+#import "NetworkActivity.h"
 
 @interface Model ()
 @property (nonatomic, strong) NSArray *stanfordPhotos;
 @end
 
 @implementation Model
+
+- (id)init
+{
+    return [super init];
+}
+
+- (id)initWithPhotos
+{
+    self = [self init];
+    if (self) {
+        _stanfordPhotos = [FlickrFetcher stanfordPhotos];
+    }
+    return self;
+}
 
 - (NSArray *)stanfordPhotos
 {

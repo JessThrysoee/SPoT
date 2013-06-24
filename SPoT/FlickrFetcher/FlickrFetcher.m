@@ -8,6 +8,7 @@
 
 #import "FlickrFetcher.h"
 #import "FlickrAPIKey.h"
+#import "NetworkActivity.h"
 
 #define FLICKR_PLACE_ID @"place_id"
 
@@ -23,7 +24,10 @@
         NSLog(@"[%@ %@] sent %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), query);
     }
 
+    [NetworkActivity indicatorVisible:YES];
     NSData *jsonData = [[NSString stringWithContentsOfURL:[NSURL URLWithString:query] encoding:NSUTF8StringEncoding error:nil] dataUsingEncoding:NSUTF8StringEncoding];
+    [NetworkActivity indicatorVisible:NO];
+    
     NSError *error = nil;
     NSDictionary *results = jsonData ? [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:&error] : nil;
 

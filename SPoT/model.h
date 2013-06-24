@@ -10,6 +10,8 @@
 
 @interface Model : NSObject
 
+- (id)initWithPhotos;
+
 @property (nonatomic, strong) NSArray *tags;  // NSString
 @property (nonatomic, strong) NSDictionary *photosWithTag;
 

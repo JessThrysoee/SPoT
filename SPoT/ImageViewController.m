@@ -8,6 +8,7 @@
 
 
 #import "ImageViewController.h"
+#import "NetworkActivity.h"
 
 @interface ImageViewController () <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -37,7 +38,11 @@
     {
         dispatch_queue_t queue = dispatch_queue_create("resetImage queue", NULL);
         dispatch_async(queue, ^{
+            
+            [NetworkActivity indicatorVisible:YES];
             NSData *imageData = [[NSData alloc] initWithContentsOfURL:self.imageURL];
+            [NetworkActivity indicatorVisible:NO];
+            
             UIImage *image = [[UIImage alloc] initWithData:imageData];
             
             dispatch_async(dispatch_get_main_queue(), ^{
