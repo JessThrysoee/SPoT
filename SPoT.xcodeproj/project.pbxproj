@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C50B7B4A1778F29D000C71D4 /* NetworkActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = C50B7B491778F29D000C71D4 /* NetworkActivity.m */; };
+		C50B7B50177901AA000C71D4 /* stanford_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C50B7B4F177901AA000C71D4 /* stanford_icon.png */; };
 		C528324217762E00004F6AC4 /* stanford_bw.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C528324117762E00004F6AC4 /* stanford_bw.jpg */; };
 		C555AAD71773BB3F00C8C9BF /* TagGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C555AAD61773BB3F00C8C9BF /* TagGroupViewController.m */; };
 		C555AADA1773C25E00C8C9BF /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C555AAD91773C25E00C8C9BF /* ImageViewController.m */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		C50B7B481778F29D000C71D4 /* NetworkActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkActivity.h; sourceTree = "<group>"; };
 		C50B7B491778F29D000C71D4 /* NetworkActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkActivity.m; sourceTree = "<group>"; };
+		C50B7B4F177901AA000C71D4 /* stanford_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stanford_icon.png; path = ../stanford_icon.png; sourceTree = "<group>"; };
 		C528324117762E00004F6AC4 /* stanford_bw.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = stanford_bw.jpg; sourceTree = "<group>"; };
 		C555AAD51773BB3F00C8C9BF /* TagGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagGroupViewController.h; sourceTree = "<group>"; };
 		C555AAD61773BB3F00C8C9BF /* TagGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagGroupViewController.m; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 		C5991965177394D5007210E2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C50B7B4F177901AA000C71D4 /* stanford_icon.png */,
 				C528324117762E00004F6AC4 /* stanford_bw.jpg */,
 				C5991966177394D5007210E2 /* SPoT-Info.plist */,
 				C5991967177394D5007210E2 /* InfoPlist.strings */,
@@ -223,6 +226,7 @@
 				C5991975177394D5007210E2 /* Default-568h@2x.png in Resources */,
 				C5991978177394D5007210E2 /* MainStoryboard.storyboard in Resources */,
 				C528324217762E00004F6AC4 /* stanford_bw.jpg in Resources */,
+				C50B7B50177901AA000C71D4 /* stanford_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
