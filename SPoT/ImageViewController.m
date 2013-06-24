@@ -13,6 +13,7 @@
 @interface ImageViewController () <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @end
 
@@ -36,6 +37,7 @@
 {
     if (self.scrollView)
     {
+        [self.spinner startAnimating];
         dispatch_queue_t queue = dispatch_queue_create("resetImage queue", NULL);
         dispatch_async(queue, ^{
             
@@ -46,6 +48,9 @@
             UIImage *image = [[UIImage alloc] initWithData:imageData];
             
             dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [self.spinner stopAnimating];
+                
                 if (image && self.scrollView)
                 {
                     self.scrollView.contentSize = CGSizeZero;
