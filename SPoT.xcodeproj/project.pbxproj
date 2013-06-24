@@ -39,7 +39,7 @@
 		C586F1BB1774EB000059DCDA /* SPoTTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPoTTabBarController.m; sourceTree = "<group>"; };
 		C586F1BD1774FBE50059DCDA /* RecentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentsViewController.h; sourceTree = "<group>"; };
 		C586F1BE1774FBE50059DCDA /* RecentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentsViewController.m; sourceTree = "<group>"; };
-		C599195B177394D5007210E2 /* SPoT-v4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SPoT-v4.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C599195B177394D5007210E2 /* SPoT-v5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SPoT-v5.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C599195E177394D5007210E2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C5991960177394D5007210E2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C5991962177394D5007210E2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -92,7 +92,7 @@
 		C599195C177394D5007210E2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C599195B177394D5007210E2 /* SPoT-v4.app */,
+				C599195B177394D5007210E2 /* SPoT-v5.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -177,7 +177,7 @@
 			);
 			name = SPoT;
 			productName = SPoT;
-			productReference = C599195B177394D5007210E2 /* SPoT-v4.app */;
+			productReference = C599195B177394D5007210E2 /* SPoT-v5.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -328,7 +328,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SPoT/SPoT-Prefix.pch";
 				INFOPLIST_FILE = "SPoT/SPoT-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)-v4";
+				PRODUCT_NAME = "$(TARGET_NAME)-v5";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -339,7 +339,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SPoT/SPoT-Prefix.pch";
 				INFOPLIST_FILE = "SPoT/SPoT-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)-v4";
+				PRODUCT_NAME = "$(TARGET_NAME)-v5";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
