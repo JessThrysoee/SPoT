@@ -35,21 +35,26 @@
 {
     if (self.scrollView)
     {
-        self.scrollView.contentSize = CGSizeZero;
-        self.imageView.image = nil;
-        
-        NSData *imageData = [[NSData alloc] initWithContentsOfURL:self.imageURL];
-        UIImage *image = [[UIImage alloc] initWithData:imageData];
-        
-        if (image)
-        {
-            self.scrollView.zoomScale = 1.0;
-            self.scrollView.contentSize = image.size;
-            self.imageView.image = image;
-            self.imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
+        dispatch_queue_t queue = dispatch_queue_create("resetImage queue", NULL);
+        dispatch_async(queue, ^{
+            NSData *imageData = [[NSData alloc] initWithContentsOfURL:self.imageURL];
+            UIImage *image = [[UIImage alloc] initWithData:imageData];
             
-            [self setZoomScale:NO];
-        }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (image && self.scrollView)
+                {
+                    self.scrollView.contentSize = CGSizeZero;
+                    self.imageView.image = nil;
+                    
+                    self.scrollView.zoomScale = 1.0;
+                    self.scrollView.contentSize = image.size;
+                    self.imageView.image = image;
+                    self.imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
+                    
+                    [self setZoomScale:NO];
+                }
+            });
+        });
     }
 }
 
@@ -90,7 +95,7 @@
 
 - (void)setZoomScale:(BOOL)animated
 {
-    if (self.scrollView.bounds.size.width == 0)
+    if (self.scrollView.bounds.size.width == 0 || !self.imageView.image)
     {
         return;
     }
