@@ -10,6 +10,7 @@
 		C50B7B4A1778F29D000C71D4 /* NetworkActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = C50B7B491778F29D000C71D4 /* NetworkActivity.m */; };
 		C50B7B50177901AA000C71D4 /* stanford_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C50B7B4F177901AA000C71D4 /* stanford_icon.png */; };
 		C528324217762E00004F6AC4 /* stanford_bw.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C528324117762E00004F6AC4 /* stanford_bw.jpg */; };
+		C53CF4FE177A406E00BF7D4E /* ImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C53CF4FD177A406E00BF7D4E /* ImageCache.m */; };
 		C555AAD71773BB3F00C8C9BF /* TagGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C555AAD61773BB3F00C8C9BF /* TagGroupViewController.m */; };
 		C555AADA1773C25E00C8C9BF /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C555AAD91773C25E00C8C9BF /* ImageViewController.m */; };
 		C586F1BC1774EB000059DCDA /* SPoTTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C586F1BB1774EB000059DCDA /* SPoTTabBarController.m */; };
@@ -36,6 +37,8 @@
 		C50B7B491778F29D000C71D4 /* NetworkActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkActivity.m; sourceTree = "<group>"; };
 		C50B7B4F177901AA000C71D4 /* stanford_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stanford_icon.png; path = ../stanford_icon.png; sourceTree = "<group>"; };
 		C528324117762E00004F6AC4 /* stanford_bw.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = stanford_bw.jpg; sourceTree = "<group>"; };
+		C53CF4FC177A406E00BF7D4E /* ImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCache.h; sourceTree = "<group>"; };
+		C53CF4FD177A406E00BF7D4E /* ImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCache.m; sourceTree = "<group>"; };
 		C555AAD51773BB3F00C8C9BF /* TagGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagGroupViewController.h; sourceTree = "<group>"; };
 		C555AAD61773BB3F00C8C9BF /* TagGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagGroupViewController.m; sourceTree = "<group>"; };
 		C555AAD81773C25E00C8C9BF /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
@@ -136,6 +139,8 @@
 				C586F1BE1774FBE50059DCDA /* RecentsViewController.m */,
 				C555AAD81773C25E00C8C9BF /* ImageViewController.h */,
 				C555AAD91773C25E00C8C9BF /* ImageViewController.m */,
+				C53CF4FC177A406E00BF7D4E /* ImageCache.h */,
+				C53CF4FD177A406E00BF7D4E /* ImageCache.m */,
 				C5991981177398A2007210E2 /* FlickrFetcher */,
 				C5991965177394D5007210E2 /* Supporting Files */,
 			);
@@ -249,6 +254,7 @@
 				C586F1BC1774EB000059DCDA /* SPoTTabBarController.m in Sources */,
 				C586F1BF1774FBE50059DCDA /* RecentsViewController.m in Sources */,
 				C50B7B4A1778F29D000C71D4 /* NetworkActivity.m in Sources */,
+				C53CF4FE177A406E00BF7D4E /* ImageCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

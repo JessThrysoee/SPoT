@@ -9,12 +9,14 @@
 
 #import "ImageViewController.h"
 #import "NetworkActivity.h"
+#import "ImageCache.h"
 
 @interface ImageViewController () <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
+@property (strong, nonatomic) ImageCache *imageCache;
 @end
 
 @implementation ImageViewController
@@ -23,6 +25,17 @@
 {
     _imageURL = imageURL;
     [self resetImage];
+}
+
+
+- (ImageCache *)imageCache
+{
+    if (!_imageCache)
+    {
+        _imageCache = [[ImageCache alloc] init];
+    }
+    
+    return _imageCache;
 }
 
 
@@ -35,36 +48,51 @@
 
 - (void)resetImage
 {
-    if (self.scrollView)
+    if (self.scrollView && self.imageURL)
     {
-        [self.spinner startAnimating];
-        dispatch_queue_t queue = dispatch_queue_create("resetImage queue", NULL);
-        dispatch_async(queue, ^{
-            
-            [NetworkActivity indicatorVisible:YES];
-            NSData *imageData = [[NSData alloc] initWithContentsOfURL:self.imageURL];
-            [NetworkActivity indicatorVisible:NO];
-            
-            UIImage *image = [[UIImage alloc] initWithData:imageData];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
+            [self.spinner startAnimating];
+        
+        NSData *imageData = [self.imageCache getImageData:self.imageURL];
+        
+        if (imageData)
+        {
+            [self updateImage:[[UIImage alloc] initWithData:imageData]];
+        }
+        else
+        {
+            dispatch_queue_t queue = dispatch_queue_create("resetImage queue", NULL);
+            dispatch_async(queue, ^{
+                [NetworkActivity indicatorVisible:YES];
+                NSData *imageData = [[NSData alloc] initWithContentsOfURL:self.imageURL];
+                [NetworkActivity indicatorVisible:NO];
                 
-                [self.spinner stopAnimating];
+                UIImage *image = [[UIImage alloc] initWithData:imageData];
                 
-                if (image && self.scrollView)
-                {
-                    self.scrollView.contentSize = CGSizeZero;
-                    self.imageView.image = nil;
-                    
-                    self.scrollView.zoomScale = 1.0;
-                    self.scrollView.contentSize = image.size;
-                    self.imageView.image = image;
-                    self.imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
-                    
-                    [self setZoomScale:NO];
-                }
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self updateImage:image];
+                    [self.imageCache addImageData:imageData withName:self.imageURL];
+                });
             });
-        });
+        }
+    }
+}
+
+
+- (void)updateImage:(UIImage *)image
+{
+    [self.spinner stopAnimating];
+    
+    if (image && self.scrollView)
+    {
+        self.scrollView.contentSize = CGSizeZero;
+        self.imageView.image = nil;
+        
+        self.scrollView.zoomScale = 1.0;
+        self.scrollView.contentSize = image.size;
+        self.imageView.image = image;
+        self.imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
+        
+        [self setZoomScale:NO];
     }
 }
 
