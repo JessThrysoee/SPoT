@@ -50,7 +50,7 @@
 {
     if (self.scrollView && self.imageURL)
     {
-            [self.spinner startAnimating];
+        [self.spinner startAnimating];
         
         NSData *imageData = [self.imageCache getImageData:self.imageURL];
         

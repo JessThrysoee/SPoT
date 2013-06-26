@@ -9,10 +9,9 @@
 #import "ImageCache.h"
 
 @interface ImageCache ()
-
 @property (nonatomic, strong) NSURL *cacheDir;
-
 @end
+
 @implementation ImageCache
 
 
@@ -30,21 +29,47 @@
 }
 
 
-- (void)evict
+#define CACHE_SIZE 3000000   // 3MB cache
+
+- (void)makeSpaceForBytes:(NSUInteger)bytes
 {
     NSFileManager *fileMan = [[NSFileManager alloc] init];
-    NSArray *contents = [fileMan contentsOfDirectoryAtPath:[self.cacheDir path] error:nil];
+    NSArray *filesInDir = [fileMan contentsOfDirectoryAtPath:[self.cacheDir path] error:nil];
     
-    if (contents)
+    if (filesInDir && [filesInDir count])
     {
-        for (NSString *path in contents)
+        // get file attrs
+        NSMutableArray *fileAttrs = [[NSMutableArray alloc] init];
+        
+        for (NSString *file in filesInDir)
         {
-            NSURL *fileURL = [self.cacheDir URLByAppendingPathComponent:path];
+            NSURL *fileURL = [self.cacheDir URLByAppendingPathComponent:file];
+            NSDictionary *attrs = [fileURL resourceValuesForKeys:@[NSURLFileSizeKey, NSURLContentAccessDateKey, NSURLPathKey] error:nil];
             
-            NSDictionary *attrs = [fileURL resourceValuesForKeys:@[NSURLTotalFileAllocatedSizeKey, NSURLContentAccessDateKey] error:nil];
+            if (attrs)
+            {
+                [fileAttrs addObject:attrs];
+            }
         }
         
-        // TODO NSArray of dicts, sort them by access, iterate through until cache limit is reached and then delete the rest.
+        // sort desc by atime
+        NSSortDescriptor *modifiedDescriptor = [[NSSortDescriptor alloc] initWithKey:NSURLContentAccessDateKey ascending:NO];
+        NSArray *sortedArray = [fileAttrs sortedArrayUsingDescriptors:@[modifiedDescriptor]];
+        
+        // make room for <bytes>
+        long totalSize = bytes;
+        
+        for (NSDictionary *attrs in sortedArray)
+        {
+            long curSize = [attrs[NSURLFileSizeKey] longValue];
+            
+            if (totalSize + curSize > CACHE_SIZE)
+            {
+                [fileMan removeItemAtPath:attrs[NSURLPathKey] error:nil];
+            }
+            
+            totalSize += curSize;
+        }
     }
 }
 
@@ -60,10 +85,13 @@
 
 - (BOOL)addImageData:(NSData *)imageData withName:(NSURL *)name
 {
-    BOOL res = [imageData writeToFile:[self nameToFilePath:name] atomically:NO];
+    if (imageData.length > CACHE_SIZE)
+    {
+        return NO;
+    }
     
-    [self evict];
-    return res;
+    [self makeSpaceForBytes:imageData.length];
+    return [imageData writeToFile:[self nameToFilePath:name] atomically:NO];
 }
 
 
